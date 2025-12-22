@@ -51,5 +51,5 @@ Replace `/path/to/your/image.png` with your actual image.
 
 | Version | Date       | Note |
 |---------|------------|------|
-| Ubuilt2.0 | 2025-12-25 | Initial release |
+| Ubuilt2.0 | 2025-12-23 | Initial release |
 | Ubuilt2.1 | TBD        | Upcoming features |
