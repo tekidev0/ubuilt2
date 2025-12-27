@@ -1,0 +1,2 @@
+# Ensure the default work directory won't be included
+Output/

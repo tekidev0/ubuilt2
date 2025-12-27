@@ -11,6 +11,15 @@ echo "Creating bootable ISO with GRUB..."
 cd "$ISO"
 
 # Create the ISO using grub-mkrescue
-grub-mkrescue -o "$ISO_NAME" "$ISO_FILES" --iso-level 3
+grub-mkrescue -o "$ISO_NAME" "$ISO_FILES" --iso-level 3 -volid "$ISO_LABEL"
+
+# Generate checksums
+echo "Generating checksums..."
+cd "$ISO"
+sha256sum "$(basename "$ISO_NAME")" > "$(basename "$ISO_NAME" .iso).sha256"
+md5sum "$(basename "$ISO_NAME")" > "$(basename "$ISO_NAME" .iso).md5"
 
 echo "Bootable ISO created successfully: $ISO_NAME"
+echo "Checksums generated:"
+echo "  SHA256: $(basename "$ISO_NAME").sha256"
+echo "  MD5: $(basename "$ISO_NAME").md5"

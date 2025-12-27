@@ -4,7 +4,7 @@
 
 It uses **rsync** to copy your root filesystem, **mksquashfs** to create a compressed filesystem, and **grub-mkrescue** to create a bootable ISO image. If you used chroot mode, you will be dropped into a shell to customize the filesystem before creating the squashfs.
 
-**Ubuilt** uses `zenity` to create a simple and user-friendly graphical interface for managing the process.
+**Ubuilt** uses `zenity` to create a simple and user-friendly graphical interface for managing the process. It also uses `dialog` for the CLI interface.
 
 ## How to use Ubuilt
 
@@ -17,7 +17,7 @@ git clone https://github.com/tekidev0/ubuilt2.git Ubuilt/ && cd Ubuilt/
 ### 2. Install required packages
 Install the required packages before the process:
 ```bash
-sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity
+sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
 
 ### 3. Run Ubuilt
@@ -25,26 +25,10 @@ Run Ubuilt:
 ```bash
 ./ubuilt.sh
 ```
-This will bring up `zenity` (the GUI) to guide you through the process. It will also ask for your password to run root operations with `pkexec`.
-
-### 4. Customizing GRUB (optional)
-It's optional if you want to keep the Ubuilt branding, but recommended if you are creating a custom distribution.
-
-#### 4.1. Editing the bootloader configuration (`grub.cfg`)
-The `grub.cfg` file is where it controls the text and boot paramaters. You can edit it (if you're changing the menu entries or something):
-```bash
-nano ISOFiles/boot/grub/grub.cfg
+Or the CLI version:
 ```
-
-#### 4.2. Replace the background (`bootlogo.png`)
-The `bootlogo.png` file is the background used in the `grub.cfg` file. The default `bootlogo.png` is a **Ubuilt-branded image** and is **800x600**. You can also replace it:
-```bash
-cp /path/to/your/image.png ISOFiles/boot/grub/bootlogo.png
+./ubuilt.sh --cli
 ```
-Replace `/path/to/your/image.png` with your actual image.
-
-- Tip: for the best results, the image needs to be **800x600** or **640x480**.
-
 ## Versions
 
 ### Ubuilt2.x
@@ -52,4 +36,6 @@ Replace `/path/to/your/image.png` with your actual image.
 | Version | Date       | Note |
 |---------|------------|------|
 | Ubuilt2.0 | 2025-12-23 | Initial release |
-| Ubuilt2.1 | TBD        | Upcoming features |
+| Ubuilt2.0.1 Preview | 2025-12-27 | Some features from Ubuilt2.1 Beta including CLI support |
+| Ubuilt2.1 Beta | 2026-01-01 | CLI support (`--cli` flag), and more |
+| Ubuilt2.1 | 2026-02-02 | Upcoming features |

@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../work.conf"
 
 # Create squashfs filesystem
 echo "Creating squashfs filesystem..."
-mksquashfs "$ROOTFS" "$ISO_FILES/casper/filesystem.squashfs" -comp gzip -Xcompression-level 6 -b 1M
+mksquashfs "$ROOTFS" "$ISO_FILES/casper/filesystem.squashfs" $SQUASHFS_OPTIONS
 
 # Create filesystem size file
 echo "Creating filesystem size file..."
