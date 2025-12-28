@@ -33,9 +33,9 @@ Or the CLI version:
 
 ### Ubuilt2.x
 
-| Version | Date       | Note |
-|---------|------------|------|
-| Ubuilt2.0 | 2025-12-23 | Initial release |
-| Ubuilt2.0.1 Preview | 2025-12-27 | Some features from Ubuilt2.1 Beta including CLI support |
-| Ubuilt2.1 Beta | 2026-01-01 | CLI support (`--cli` flag), and more |
-| Ubuilt2.1 | 2026-02-02 | Upcoming features |
+| Version | Tag | Date       | Note |
+|---------|-----|------------|------|
+| Ubuilt2.0 | 2.0 | 2025-12-23 | Initial release |
+| Ubuilt2.0.1 Preview | 2.0.1-preview | 2025-12-27 | Some features from Ubuilt2.1 Beta including CLI support |
+| Ubuilt2.1 Beta | 2.1-beta | 2026-01-01 | CLI support (`--cli` flag), and more |
+| Ubuilt2.1 | 2.1 | 2026-02-02 | Upcoming features |
