@@ -20,13 +20,7 @@ Install the required packages before the process:
 sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
 
-### 3. Create the Overlay directory
-Create the `Overlay` directory.
-```bash
-mkdir -p Overlay
-```
-
-### 4. Run Ubuilt
+### 3. Run Ubuilt
 Run Ubuilt:
 ```bash
 ./ubuilt.sh
