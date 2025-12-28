@@ -20,7 +20,13 @@ Install the required packages before the process:
 sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
 
-### 3. Run Ubuilt
+### 3. Remove the placeholder file from Overlay directory
+Remove the placeholder file `removeme.txt` from the `Overlay` directory before running Ubuilt.
+```bash
+rm Overlay/removeme.txt
+```
+
+### 4. Run Ubuilt
 Run Ubuilt:
 ```bash
 ./ubuilt.sh
