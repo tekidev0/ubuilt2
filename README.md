@@ -20,13 +20,7 @@ Install the required packages before the process:
 sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
 
-### 3. Remove .gitkeep file
-Remove the `.gitkeep` file from the `Overlay` directory.
-```bash
-rm Overlay/.gitkeep
-```
-
-### 4. Run Ubuilt
+### 3. Run Ubuilt
 Run Ubuilt:
 ```bash
 ./ubuilt.sh
@@ -43,6 +37,5 @@ Or the CLI version:
 |---------|-----|------------|------|
 | Ubuilt2.0 | 2.0 | 2025-12-23 | Initial release |
 | Ubuilt2.0.1 Preview | 2.0.1-preview | 2025-12-27 | Some features from Ubuilt2.1 Beta including CLI support |
-| Ubuilt2.0.2 Preview | 2.0.2-preview | 2026-01-15 | Apply overlay bug fix |
 | Ubuilt2.1 Beta | 2.1-beta | 2026-01-01 | CLI support (`--cli` flag), and more |
 | Ubuilt2.1 | 2.1 | 2026-02-02 | Upcoming features |
