@@ -1,2 +1,1 @@
-To prevent the folder from being deleted, we created this file.
-Remove this file please.
+JUST A PLACEHOLDER FILE - REMOVE THIS FILE
