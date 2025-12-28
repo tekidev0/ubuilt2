@@ -20,7 +20,13 @@ Install the required packages before the process:
 sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
 
-### 3. Run Ubuilt
+### 3. Remove .gitkeep file
+Remove the `.gitkeep` file from the `Overlay` directory.
+```bash
+rm Overlay/.gitkeep
+```
+
+### 4. Run Ubuilt
 Run Ubuilt:
 ```bash
 ./ubuilt.sh
