@@ -1,10 +1,8 @@
 # Ubuilt
 
+> NOTE: Ubuilt will turn into URemaster with the 2.1 release.
+
 **Ubuilt** *(Ubuntu + built)* is a tool for creating Ubuntu-based Live CDs.
-
-It uses **rsync** to copy your root filesystem, **mksquashfs** to create a compressed filesystem, and **grub-mkrescue** to create a bootable ISO image. If you used chroot mode, you will be dropped into a shell to customize the filesystem before creating the squashfs.
-
-**Ubuilt** uses `zenity` to create a simple and user-friendly graphical interface for managing the process. It also uses `dialog` for the CLI interface.
 
 ## How to use Ubuilt
 
@@ -17,9 +15,16 @@ git clone https://github.com/tekidev0/ubuilt2.git Ubuilt/ && cd Ubuilt/
 ### 2. Install required packages
 Install the required packages before the process:
 ```bash
-sudo apt update && sudo apt install rsync squashfs-tools mtools grub-pc-bin xorriso zenity dialog
+sudo apt update && sudo apt install rsync casper squashfs-tools mtools grub-pc-bin xorriso zenity dialog
 ```
-
+You can also install `jq` for JSON processing:
+```bash
+sudo apt install jq
+```
+If you want to support Secure Boot for the ISO, install these packages:
+```bash
+sudo apt install mokutil sbsigntool openssl
+```
 ### 3. Run Ubuilt
 Run Ubuilt:
 ```bash
@@ -38,4 +43,9 @@ Or the CLI version:
 | Ubuilt2.0 | 2.0 | 2025-12-23 | Initial release |
 | Ubuilt2.0.1 Preview | 2.0.1-preview | 2025-12-27 | Some features from Ubuilt2.1 Beta including CLI support |
 | Ubuilt2.1 Beta | 2.1-beta | 2026-01-01 | CLI support (`--cli` flag), and more |
-| Ubuilt2.1 | 2.1 | 2026-02-02 | Upcoming features |
+
+### URemaster 2.x
+
+| Version | Tag | Date       | Note |
+|---------|-----|------------|------|
+| URemaster 2.1 | 2.1 | 2026-02-02 | Upcoming features |

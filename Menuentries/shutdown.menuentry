@@ -1,0 +1,5 @@
+menuentry "Shutdown" {
+    echo "Shutting down..."
+    sleep 2
+    halt
+}

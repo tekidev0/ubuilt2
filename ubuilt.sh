@@ -6,6 +6,8 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/work.conf"
 
+echo "--- Ubuilt $VERSION ($VERSION_TAG) ---"
+
 # CLI mode flag
 CLI_MODE="false"
 
@@ -203,6 +205,12 @@ create_live_cd() {
     
     log "Copying kernel and initrd..."
     "$SCRIPT_DIR/Scripts/CopyKernel.sh"
+    
+    # Setup Secure Boot if enabled
+    if [ "$SECURE_BOOT" = "true" ]; then
+        log "Setting up UEFI Secure Boot..."
+        "$SCRIPT_DIR/Scripts/SetupSecureBoot.sh"
+    fi
     
     if [ $use_chroot -eq 0 ]; then
         log "Entering chroot environment for customization..."

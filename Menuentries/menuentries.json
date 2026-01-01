@@ -1,0 +1,6 @@
+{
+    "menuentries": [
+        "reboot.menuentry",
+        "shutdown.menuentry"
+    ]
+}

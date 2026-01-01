@@ -57,7 +57,4 @@ if [ -d "$ROOTFS/var/lib/dpkg" ]; then
     fi
 fi
 
-# Add casper entry
-echo "casper" >> "$ISO_FILES/casper/filesystem.manifest"
-
 echo "filesystem.manifest created successfully."

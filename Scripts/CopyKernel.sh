@@ -12,29 +12,40 @@ mkdir -p "$ISO_FILES/casper"
 
 # Copy kernel
 echo "Looking for kernel files..."
-KERNEL_FILE=$(find "$ROOTFS/boot" -name "vmlinuz*" -type f | head -1)
-if [ -n "$KERNEL_FILE" ]; then
-    echo "Found kernel: $KERNEL_FILE"
-    
-    # Extract kernel version from filename
-    KERNEL_VERSION=$(basename "$KERNEL_FILE" | sed 's/vmlinuz-//')
-    echo "Kernel version: $KERNEL_VERSION"
-    
-    cp "$KERNEL_FILE" "$ISO_FILES/casper/vmlinuz"
-else
-    echo "ERROR: No kernel file found in $ROOTFS/boot"
-    exit 1
+KERNEL_VERSION=$(uname -r)
+echo "Using current kernel version: $KERNEL_VERSION"
+
+# Look for kernel in rootfs first, then fallback to host system
+KERNEL_FILE=$(find "$ROOTFS/boot" -name "vmlinuz-$KERNEL_VERSION" -type f | head -1)
+if [ -z "$KERNEL_FILE" ]; then
+    echo "Kernel not found in rootfs, checking host system..."
+    KERNEL_FILE="/boot/vmlinuz-$KERNEL_VERSION"
+    if [ ! -f "$KERNEL_FILE" ]; then
+        echo "ERROR: Kernel vmlinuz-$KERNEL_VERSION not found in rootfs or host system"
+        exit 1
+    fi
 fi
+
+echo "Found kernel: $KERNEL_FILE"
 
 # Copy initrd - find matching version
 echo "Looking for initrd files..."
 # Try to find initrd with matching kernel version first
 INITRD_FILE=$(find "$ROOTFS/boot" -name "initrd.img-$KERNEL_VERSION" -type f | head -1)
 
-# If no exact match, try broader search
+# If no exact match in rootfs, try host system
 if [ -z "$INITRD_FILE" ]; then
-    echo "No exact initrd match found, searching for any initrd..."
-    INITRD_FILE=$(find "$ROOTFS/boot" -name "initrd*" -type f | head -1)
+    echo "No exact initrd match found in rootfs, checking host system..."
+    INITRD_FILE="/boot/initrd.img-$KERNEL_VERSION"
+    if [ ! -f "$INITRD_FILE" ]; then
+        echo "No exact match found, searching for any initrd..."
+        # Fallback to any initrd in rootfs
+        INITRD_FILE=$(find "$ROOTFS/boot" -name "initrd*" -type f | head -1)
+        if [ -z "$INITRD_FILE" ]; then
+            # Final fallback to any initrd on host
+            INITRD_FILE=$(find /boot -name "initrd*" -type f | head -1)
+        fi
+    fi
 fi
 
 if [ -n "$INITRD_FILE" ]; then

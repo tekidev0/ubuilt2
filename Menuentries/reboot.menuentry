@@ -1,0 +1,5 @@
+menuentry "Reboot" {
+    echo "Rebooting..."
+    sleep 2
+    reboot
+}

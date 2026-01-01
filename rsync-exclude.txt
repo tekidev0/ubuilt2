@@ -17,3 +17,4 @@ $SCRIPT_DIR
 /var/cache/apt/archives/*.deb
 /var/cache/apt/lists/*
 /var/log/*
+/home/*/VirtualBox VMs
